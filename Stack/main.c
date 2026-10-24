@@ -2,7 +2,7 @@
 #include<stdlib.h>
 #include<assert.h>
 #include<stdbool.h>
-#include<windows.h>
+// 该示例不使用 Windows API，移除平台专用头文件。
 typedef struct Stack
 {
     int *arr;
@@ -32,7 +32,7 @@ void push(Stack *st,int data)
         st->arr[st->top] = data;
         st->top++;
     }
-    
+
 }
 int pop(Stack* st)
 {
@@ -61,10 +61,10 @@ bool isEmpty(Stack* st)
 int main()
 {
     Stack* s = createStack(10);
-    printf("������һ��ʮ������\n");
+    printf("请输入一个十进制数\n");
     int in;
     scanf("%d",&in);
-    
+
     while(in!=0)
     {
         push(s,in%8);
@@ -77,6 +77,6 @@ int main()
         sum*=10;
     }
     sum/=10;
-    printf("ת��Ϊ8����Ϊ%d\n",sum);
-    system("pause");
+    printf("转换为8进制为%d\n",sum);
+    // 命令行示例直接返回，避免依赖 Windows pause 命令。
 }

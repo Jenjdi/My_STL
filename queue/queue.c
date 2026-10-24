@@ -28,6 +28,9 @@ Queue* createQueue() {
     q->front = q->rear = NULL;
     return q;
 }
+// 修复：C 语言函数必须先声明再调用。
+int isEmpty(Queue* q);
+int QueuePop(Queue* q);
 void QueueDestroy(Queue* q)
 {
     while(!isEmpty(q))
@@ -66,7 +69,7 @@ QDataType QueueFront(Queue* q)
 {
     if(q->front==NULL)
     {
-        return NULL;
+        return 0; // 空队列返回整数，避免指针到整数转换。
     }
     return q->front->data;
 }
@@ -74,7 +77,7 @@ QDataType QueueBack(Queue* q)
 {
     if(q->rear==NULL)
     {
-        return NULL;
+        return 0; // 空队列返回整数，避免指针到整数转换。
     }
     return q->rear->data;
 }

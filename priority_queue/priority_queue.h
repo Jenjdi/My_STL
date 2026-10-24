@@ -31,7 +31,7 @@ public:
         int father=(child-1)/2;
         while (child > 0)
         {
-            if (com(_con[father] , _con[child])) { 
+            if (com(_con[father] , _con[child])) {
                 std::swap(_con[father], _con[child]);
                 child = father;
                 father = (child - 1) / 2;
@@ -52,19 +52,20 @@ public:
     {
         return _con.front();
     }
+    // 修复：子节点选择也使用比较器，使最小堆和自定义比较器正确工作。
     void adjust_down(int father)
     {
         int child = (father * 2) + 1;
         while (child<_con.size())
         {
-            if (child + 1 < _con.size() && _con[child + 1] > _con[child])//���Һ��Ӵ����Ҵ������ӣ���childΪ�Һ��ӣ����򲻱�
+            if (child + 1 < _con.size() && com(_con[child], _con[child + 1]))//若右孩子存在且大于左孩子，则child为右孩子，否则不变
             {
                 child++;
             }
             if (com(_con[father] , _con[child])) {
                 std::swap(_con[father], _con[child]);
                 father=child;
-                child = child = (father * 2) + 1;
+                child = (father * 2) + 1;
             }
             else
             {

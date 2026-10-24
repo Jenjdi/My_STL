@@ -2,7 +2,7 @@
 #include<stdlib.h>
 #include<assert.h>
 #include<stdbool.h>
-#include<windows.h>
+// 该示例不使用 Windows API，移除平台专用头文件。
 typedef int LTDataType;
 typedef struct ListNode
 {
@@ -52,7 +52,7 @@ void ListPushBack(ListNode* pHead, LTDataType x)
     newnode->_prev=pHead->_prev;
     pHead->_prev->_next=newnode;
     pHead->_prev=newnode;
-    
+
 }
 // 双向链表尾删
 void ListPopBack(ListNode* pHead)
